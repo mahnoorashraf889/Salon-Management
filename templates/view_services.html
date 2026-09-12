@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Services</title>
+</head>
+<body>
+    <h1>Available Services</h1>
+    <nav>
+        <a href="{{ url_for('customer_dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+    <table border="1">
+        <tr>
+            <th>Service</th>
+            <th>Price</th>
+            <th>Duration</th>
+        </tr>
+        {% for service in services %}
+        <tr>
+            <td>{{ service.Service_name }}</td>
+            <td>{{ service.Price }}</td>
+            <td>{{ service.Duration }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

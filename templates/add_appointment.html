@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Appointment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="page-body">
+
+<div class="form-container">
+
+    <h1 class="form-title">Add Appointment</h1>
+
+    <form method="POST" class="appointment-form">
+
+        <!-- Customer -->
+        <div class="form-group">
+            <label class="form-label">Customer</label>
+            <select name="customer_id" class="form-select" required>
+                {% for customer in customers %}
+                <option value="{{ customer.Customer_id }}">{{ customer.Name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Staff -->
+        <div class="form-group">
+            <label class="form-label">Staff</label>
+            <select name="staff_id" class="form-select" required>
+                {% for staff in staff_list %}
+                <option value="{{ staff.Staff_id }}">{{ staff.Name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Services -->
+        <div class="form-group">
+            <label class="form-label">Services</label>
+            <select name="service_id" class="form-select form-select-multiple" multiple required>
+                {% for service in services %}
+                <option value="{{ service.Service_id }}">
+                    {{ service.Service_name }} - ${{ service.Price }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Date -->
+        <div class="form-group">
+            <label class="form-label">Date</label>
+            <input type="date" name="date" class="form-input" required>
+        </div>
+
+        <!-- Time -->
+        <div class="form-group">
+            <label class="form-label">Time</label>
+            <input type="time" name="time" class="form-input" required>
+        </div>
+
+        <!-- Submit -->
+        <div class="form-actions">
+            <input type="submit" value="Book Appointment" class="btn btn-primary">
+        </div>
+
+    </form>
+
+    <div class="form-footer">
+        <a href="{{ url_for('admin_dashboard') }}" class="btn btn-outline">Back</a>
+    </div>
+
+</div>
+
+</body>
+</html>

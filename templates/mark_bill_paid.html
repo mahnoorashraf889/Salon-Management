@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mark Bill as Paid</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="page-body">
+
+<div class="bill-pay-container">
+
+    <h1 class="bill-pay-title">Mark Bill as Paid</h1>
+
+    <nav class="bill-pay-nav">
+        <a href="{{ url_for('admin_bills') }}" class="nav-link">Back to Bills</a>
+        <a href="{{ url_for('logout') }}" class="nav-link nav-link-logout">Logout</a>
+    </nav>
+
+    <div class="bill-details">
+        <p><strong>Bill ID:</strong> {{ bill.Bill_id }}</p>
+        <p><strong>Amount:</strong> ${{ bill.Amount }}</p>
+    </div>
+
+    <form method="POST" class="bill-pay-form">
+
+        <div class="form-group">
+            <label class="form-label" for="payment_method">Select Payment Method</label>
+            <select name="payment_method" class="form-select" required>
+                <option value="Cash">Cash</option>
+                <option value="Card">Card</option>
+                <option value="Online">Online</option>
+            </select>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-success">Mark Paid</button>
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>

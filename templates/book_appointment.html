@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Appointment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="page-body">
+
+<div class="appointment-container">
+
+    <h1 class="appointment-title">Book Appointment</h1>
+
+    <nav class="appointment-nav">
+        <a href="{{ url_for('customer_dashboard') }}" class="nav-link">Dashboard</a>
+        <a href="{{ url_for('book_appointment') }}" class="nav-link">Book Appointment</a>
+        <a href="{{ url_for('customer_bills') }}" class="nav-link">View Bills</a>
+        <a href="{{ url_for('logout') }}" class="nav-link nav-link-logout">Logout</a>
+    </nav>
+
+    <form method="POST" class="appointment-form">
+
+        <div class="form-group">
+            <label class="form-label" for="staff_id">Select Staff</label>
+            <select name="staff_id" class="form-select" required>
+                {% for staff in staff_list %}
+                <option value="{{ staff.Staff_id }}">{{ staff.Name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="service_id">Select Services</label>
+            <select name="service_id" class="form-select form-select-multiple" multiple required>
+                {% for service in services %}
+                <option value="{{ service.Service_id }}">
+                    {{ service.Service_name }} - ${{ service.Price }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="date">Date</label>
+            <input type="date" name="date" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="time">Time</label>
+            <input type="time" name="time" class="form-input" required>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Book Appointment</button>
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>

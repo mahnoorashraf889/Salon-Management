@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="page-body">
+
+<div class="dashboard-container">
+
+    <h1 class="dashboard-title">Admin Dashboard</h1>
+
+    <nav class="dashboard-nav">
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('services') }}">Manage Services</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('admin_appointments') }}">View Appointments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('add_appointment') }}">Add Appointment</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav-link-logout" href="{{ url_for('logout') }}">Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+    <p class="welcome-text">Welcome, Admin! Choose an option above.</p>
+
+</div>
+
+</body>
+</html>

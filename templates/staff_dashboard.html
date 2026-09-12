@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Staff Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="page-body">
+
+<div class="staff-container">
+
+    <div class="staff-header">
+        <h1 class="staff-title">Staff Dashboard</h1>
+
+        <nav class="staff-nav">
+            <a href="{{ url_for('logout') }}" class="nav-link nav-link-logout">Logout</a>
+        </nav>
+    </div>
+
+    <h2 class="staff-subtitle">Your Appointments</h2>
+
+    <div class="table-wrapper">
+        <table class="staff-table">
+
+            <thead class="table-head">
+                <tr class="table-row">
+                    <th class="table-header">Appointment ID</th>
+                    <th class="table-header">Customer</th>
+                    <th class="table-header">Date</th>
+                    <th class="table-header">Time</th>
+                    <th class="table-header">Status</th>
+                    <th class="table-header">Action</th>
+                </tr>
+            </thead>
+
+            <tbody class="table-body">
+                {% for appt in appointments %}
+                <tr class="table-row">
+                    <td class="table-cell">{{ appt.Appointment_id }}</td>
+                    <td class="table-cell">{{ appt.Customer_name }}</td>
+                    <td class="table-cell">{{ appt.Date }}</td>
+                    <td class="table-cell">{{ appt.Time }}</td>
+                    <td class="table-cell">
+                        <span class="status-badge status-{{ appt.Status | lower }}">
+                            {{ appt.Status }}
+                        </span>
+                    </td>
+                    <td class="table-cell table-actions">
+                        {% if appt.Status != 'Completed' %}
+                        <a href="{{ url_for('update_appointment_status', appointment_id=appt.Appointment_id) }}"
+                           class="btn btn-success">
+                            Mark Completed
+                        </a>
+                        {% else %}
+                        <span class="completed-text">Completed</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

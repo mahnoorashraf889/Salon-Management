@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add New Service</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="page-body">
+
+<div class="service-container">
+
+    <h1 class="service-title">Add New Service</h1>
+
+    <form method="POST" class="service-form">
+
+        <div class="form-group">
+            <label class="form-label">Service Name</label>
+            <input type="text" name="service_name" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Price</label>
+            <input type="number" step="0.01" name="price" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Duration</label>
+            <input type="text" name="duration" class="form-input" placeholder="e.g. 30 mins">
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Add Service</button>
+            <a href="{{ url_for('services') }}" class="btn btn-outline">Back to Services</a>
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>

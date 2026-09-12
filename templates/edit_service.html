@@ -1,0 +1,9 @@
+<!-- templates/edit_service.html -->
+<h1>Edit Service</h1>
+<form method="POST">
+    Service Name: <input type="text" name="service_name" value="{{ service.Service_name }}" required><br>
+    Price: <input type="number" step="0.01" name="price" value="{{ service.Price }}" required><br>
+    Duration: <input type="text" name="duration" value="{{ service.Duration }}"><br>
+    <input type="submit" value="Update Service">
+</form>
+<a href="{{ url_for('services') }}">Back to Services</a>
